@@ -1,4 +1,4 @@
-package com.example.fineduca.fineduca
+package com.example.fineduca.screens
 
 import androidx.lifecycle.ViewModel
 
