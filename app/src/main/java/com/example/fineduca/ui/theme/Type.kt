@@ -8,31 +8,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.fineduca.R
 
+// Definição correta da FontFamily
+val Poppins = FontFamily(
+    Font(R.font.poppins_regular) // Certifique-se de que o arquivo poppins_regular está na pasta res/font/
+)
 
-val Poppins = FontFamily(Font(R.font.poppins_regular))
-// Set of Material typography styles to start with
+// Definindo estilos de tipografia com a fonte personalizada
 val Typography = Typography(
     bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = Poppins, // Agora estamos usando a fonte personalizada Poppins
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     )
-    /* Other default text styles to override
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
-    ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
-    )
-    */
+    // Outros estilos de tipografia podem ser definidos aqui, se necessário
 )
