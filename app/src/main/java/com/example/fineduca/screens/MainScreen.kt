@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.res.painterResource
 import com.example.fineduca.R
 import androidx.compose.foundation.layout.Arrangement
+import com.example.fineduca.components.DarkButton
+import com.example.fineduca.components.LightButton
 
 @Composable
 fun MainScreen() {
@@ -52,27 +54,8 @@ fun MainScreen() {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Button(
-                    onClick = {  },
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF384B65)
-                    ),
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp),
-                    modifier = Modifier.width(150.dp)
-                ) {
-                    Text(text = "Cadastre-se", fontSize = 16.sp)
-                }
-
-                Button(
-                    onClick = { },
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF8EFE03)
-                    ),
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp),
-                    modifier = Modifier.width(150.dp)
-                ) {
-                    Text(text = "Acessar", color = Color(0xFF242831), fontSize = 16.sp)
-                }
+                DarkButton("Cadastre-se", modifier = Modifier.width(150.dp))
+                LightButton("Acessar", modifier = Modifier.width(150.dp))
             }
         }
     }
