@@ -1,4 +1,4 @@
-package com.example.fineduca.ui.screens
+package com.example.fineduca.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

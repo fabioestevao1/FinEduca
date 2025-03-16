@@ -1,17 +1,21 @@
 package com.example.fineduca.components
 
-import android.graphics.Color
-import android.service.autofill.OnClickAction
-import android.text.AutoText
 import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun Botao(
-    text:String,
+    text: String,
     color: Color,
-    modifier: Modifier
+    modifier: Modifier = Modifier // Deixando opcional
 ) {
-    Button(onClick = {})
+    Button(
+        onClick = {},
+        modifier = modifier
+    ) {
+        Text(text = text)
+    }
 }
