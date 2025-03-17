@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">FinEduca</string>
+    <string name="TitleScreenInvesment">Simulação de Investimentos Utilizando Juros Simples e Juros Compostos"</string>
+    <string name="SubtitleScreenInvesment">"Nesta tela você descobrirá a Diferença de entre os dois tipos de Juros, simule abaixo e veja a diferença"</string>
+    <string name="TitleJuros1">"Cálculo Utilizando Juros Simples"</string>
+    <string name="TitleJuros2">"Cálculo Utilizando Juros Composto"</string>
+    <string name="Label1">"Dados do Investimento"</string>
+    <string name="PlaceholderValue">"Valor do Investimento"</string>
+    <string name="PlaceholderRate">"Taxa de Juros"</string>
+    <string name="PlaceholderPeriod">"Período em Meses"</string>
+    <string name="BotaoCalcular">"Calcular"</string>
+    <string name="TituloCardResultado">"Resultado"</string>
+    <string name="JurosCard">"O Valor do Juros é:"</string>
+    <string name="MontanteCard">"O Valor do Montante é :"</string>
+    <string name="PlaceholderCDI">"CDI"</string>
+    <string name="PlaceholderPercentual">" % do CDI"</string>
+    <string name="PlaceholderPre">"Pré ou Pós Fixado"</string>
+    <string name="PlaceholderInvestimento">"Selecione o Tipo do Invesitmento"</string>
+    <string name="MontanteCardResultado">"O Montante Bruto sem os impostos é : "</string>
+    <string name="ImpostosCardResultado">"O Valor a ser pago de Imposto de Renda na fonte é: "</string>
+    <string name="MontanteLiquidoCardResultado">"O Montante após os impostos é: "</string>
 </resources>
+
+
+
+
+
+
+
+

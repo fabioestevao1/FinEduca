@@ -40,12 +40,20 @@ fun MainScreen() {
             horizontalAlignment = Alignment.Start
         ) {
             Text(
-                text = "Finanças simples,\nvida melhor.",
-                fontSize = 40.sp,
+                text = "FinEduca\n",
+                fontSize = 60.sp,
                 fontWeight = FontWeight.Bold,
-                lineHeight = 60.sp,
+                lineHeight = 30.sp,
                 color = Color.White,
-                modifier = Modifier.padding(bottom = 40.dp)
+                modifier = Modifier.padding(bottom = 5.dp)
+            )
+            Text(
+                text = "Simplificando as Finanças\n",
+                fontSize = 30.sp,
+                fontWeight = FontWeight.SemiBold,
+                lineHeight = 40.sp,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 20.dp)
             )
 
             Row(
