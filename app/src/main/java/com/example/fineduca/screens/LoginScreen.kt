@@ -1,4 +1,5 @@
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.text.BasicTextField
@@ -25,7 +26,7 @@ import com.example.fineduca.components.DarkButton
 
 val poppinsFontFamily = FontFamily(
     Font(R.font.poppins_regular),
-    Font(R.font.poppins_bold, FontWeight.Bold) // Negrito
+    Font(R.font.poppins_bold, FontWeight.Bold)
 )
 
 @Composable
@@ -36,11 +37,11 @@ fun GradientBackgroundLoginScreen() {
             .background(
                 brush = Brush.linearGradient(
                     colors = listOf(
-                        Color(0xFF242831), // Cor escura
-                        Color(0xFF384B65), // Cor mais clara
-                        Color(0xFFBEFE03), // Cor verde
-                        Color(0xFF8EFE03),  // Outra cor verde
-                        Color(0xFFC4C4CC)   // Cor cinza
+                        Color(0xFF242831),
+                        Color(0xFF384B65),
+                        Color(0xFFBEFE03),
+                        Color(0xFF8EFE03),
+                        Color(0xFFC4C4CC)
                     )
                 )
             )
@@ -51,8 +52,8 @@ fun GradientBackgroundLoginScreen() {
                 .background(
                     brush = Brush.linearGradient(
                         colors = listOf(
-                            Color(0xFF242831).copy(alpha = 0.2f), // Camada escura com 20% de opacidade
-                            Color.Transparent // Transparente para manter a base visível
+                            Color(0xFF242831).copy(alpha = 0.2f),
+                            Color.Transparent
                         )
                     )
                 )
@@ -77,8 +78,8 @@ fun LoginScreen(navController: NavHostController) {
             text = "FinEduca",
             color = Color.White,
             style = MaterialTheme.typography.headlineMedium.copy(
-                fontFamily = poppinsFontFamily, // Aplica a fonte Poppins
-                fontWeight = FontWeight.Bold // Aplica o negrito
+                fontFamily = poppinsFontFamily,
+                fontWeight = FontWeight.Bold
             ),
             modifier = Modifier.padding(top = 80.dp)
         )
@@ -108,7 +109,6 @@ fun LoginScreen(navController: NavHostController) {
                 .padding(vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Rótulo "Email"
             Text(
                 text = "Email",
                 color = Color.White,
@@ -236,11 +236,13 @@ fun LoginScreen(navController: NavHostController) {
                 color = Color(0xFF8EFE03),
                 fontFamily = poppinsFontFamily,
                 fontSize = 16.sp,
+                modifier = Modifier.clickable {
+                    navController.navigate("password_screen")
+                }
             )
         }
         Spacer(modifier = Modifier.height(40.dp))
 
-        //Botões "Voltar" e "Próximo"
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
@@ -250,8 +252,7 @@ fun LoginScreen(navController: NavHostController) {
                     .width(135.dp)
                     .height(50.dp)
             ) {
-                // Navega para a tela de cadastro
-                navController.navigate("register_screen")
+                navController.navigate("main_screen")
             }
 
             LightButton(
@@ -259,12 +260,7 @@ fun LoginScreen(navController: NavHostController) {
                     .width(135.dp)
                     .height(50.dp)
             ) {
-                // Verifica se o email e senha estão preenchidos e navega para a tela de home
-                if (email.isNotEmpty() && password.isNotEmpty()) {
-                    navController.navigate("home_screen")  // Navega para a tela "Home"
-                } else {
-                    // Exibe um alerta ou mensagem de erro, se necessário
-                }
+                    navController.navigate("home_screen")
             }
         }
         Spacer(modifier = Modifier.height(65.dp))
@@ -286,9 +282,4 @@ fun LoginScreen(navController: NavHostController) {
             }
         )
     }
-}
-
-
-class LoginScreen {
-
 }

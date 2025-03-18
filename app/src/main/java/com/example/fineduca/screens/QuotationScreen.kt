@@ -61,18 +61,6 @@ fun QuotationScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(40.dp))
         TopMenu()
 
-        // Botão de Voltar
-        IconButton(
-            onClick = { navController.popBackStack() },
-            modifier = Modifier.padding(start = 16.dp)
-        ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = "Voltar",
-                tint = Color.White
-            )
-        }
-
         // Conteúdo principal
         Column(
             modifier = Modifier
@@ -113,7 +101,7 @@ fun QuotationScreen(navController: NavController) {
         BottomMenu(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(16.dp), navController
         )
     }
 }
@@ -143,20 +131,20 @@ fun CurrencyCard(
         ) {
             Text(
                 text = currencyCode,
-                color = Color.White, // Cor do texto em branco
+                color = Color.Black, // Cor do texto em branco
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = currencyName,
-                color = Color.White, // Cor do texto em branco
+                color = Color.Black, // Cor do texto em branco
                 fontSize = 16.sp
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "Valor: R$ $bidValue",
-                color = Color.White, // Cor do texto em branco
+                color = Color.Black, // Cor do texto em branco
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Medium
             )

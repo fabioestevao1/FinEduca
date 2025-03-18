@@ -78,7 +78,7 @@ fun InformationScreen(navController: NavController) {
         BottomMenu(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(16.dp), navController
         )
     }
 }

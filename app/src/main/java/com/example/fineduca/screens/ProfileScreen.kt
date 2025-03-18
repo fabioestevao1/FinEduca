@@ -12,12 +12,16 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.fineduca.R
 import com.example.fineduca.components.BottomMenu
 import com.example.fineduca.components.TopMenu
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavController
+
 
 @Composable
 fun ProfileScreen(navController: NavController) {
@@ -29,28 +33,32 @@ fun ProfileScreen(navController: NavController) {
     ) {
         Spacer(modifier = Modifier.height(40.dp))
 
-        // Menu superior
         TopMenu()
 
-        // Botão de Voltar
-        IconButton(
-            onClick = { navController.popBackStack() },
-            modifier = Modifier.padding(start = 16.dp)
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .clip(CircleShape)
         ) {
-            Icon(
-                imageVector = Icons.Filled.ArrowBack,
-                contentDescription = "Voltar",
-                tint = Color.White
+            Image(
+                painter = painterResource(id = R.drawable.baseline_person_pin_24),
+                contentDescription = "Foto de perfil",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize(),
+                alpha = 0.9f
             )
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Text(
             text = "João da Silva",
             fontSize = 22.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.White
+            color = Color.White,
+            modifier = Modifier.padding(bottom = 16.dp)
         )
 
         Text(
@@ -59,8 +67,36 @@ fun ProfileScreen(navController: NavController) {
             color = Color.LightGray
         )
 
+        Spacer(modifier = Modifier.height(24.dp))
+
         Spacer(modifier = Modifier.height(32.dp))
 
-        BottomMenu(modifier = Modifier.fillMaxWidth().padding(16.dp))
+        Column(modifier = Modifier.fillMaxWidth(0.9f)) {
+            ProfileOption(
+                title = "Alterar Foto de Perfil",
+                onClick = {  }
+            )
+            ProfileOption(
+                title = "Alterar Email",
+                onClick = {  }
+            )
+            ProfileOption(
+                title = "Alterar Senha",
+                onClick = {  }
+            )
+            ProfileOption(
+                title = "Ajuda e Suporte",
+                onClick = {  }
+            )
+        }
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        BottomMenu(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            navController
+        )
     }
 }

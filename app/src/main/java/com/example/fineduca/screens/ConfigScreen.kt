@@ -18,7 +18,7 @@ import com.example.fineduca.R
 import com.example.fineduca.components.BottomMenu
 import com.example.fineduca.components.TopMenu
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ExitToApp
 
 @Composable
 fun ConfigScreen(navController: NavController) {
@@ -32,18 +32,6 @@ fun ConfigScreen(navController: NavController) {
 
         // Menu superior
         TopMenu()
-
-        // Botão de Voltar
-        IconButton(
-            onClick = { navController.popBackStack() },
-            modifier = Modifier.padding(start = 16.dp)
-        ) {
-            Icon(
-                imageVector = Icons.Filled.ArrowBack,
-                contentDescription = "Voltar",
-                tint = Color.White
-            )
-        }
 
         // Título da tela de configurações
         Text(
@@ -88,13 +76,36 @@ fun ConfigScreen(navController: NavController) {
             )
         }
 
+        // Botão de Logout
+        Button(
+            onClick = {
+                // Redireciona para a tela principal (main_screen)
+                navController.navigate("main_screen")
+            },
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .padding(vertical = 16.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.Red, // Cor de fundo vermelha
+                contentColor = Color.White // Cor do texto branco
+            )
+        ) {
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.ExitToApp,
+                contentDescription = "Logout",
+                modifier = Modifier.size(20.dp)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "Sair")
+        }
+
         Spacer(modifier = Modifier.weight(1f))
 
         // Menu inferior
         BottomMenu(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(16.dp), navController
         )
     }
 }

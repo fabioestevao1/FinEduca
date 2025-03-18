@@ -1,59 +1,78 @@
 package com.example.fineduca.components
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.fineduca.R
 import com.example.fineduca.ui.theme.MainBlue
 import com.example.fineduca.ui.theme.MainGreen
 
-
 @Composable
-fun BottomMenu(modifier: Modifier) {
-    // Estado para controlar o ícone selecionado
+fun BottomMenu(modifier: Modifier, navController: NavController) {
     var selectedItem by remember { mutableStateOf(0) }
 
-    // Ícones do menu inferior
     val icons = listOf(
-        Icons.Filled.Home,  // Ícone de Home
-        Icons.Filled.Menu,  // Ícone de Pesquisa
-        Icons.Filled.Face,  // Ícone de Notificação
-        Icons.Filled.Settings // Ícone de Conta
+        Icons.Filled.Home,
+        Icons.Filled.Share,
+        Icons.Filled.AccountCircle,
+        Icons.Filled.Settings
     )
 
-    // Descrição dos ícones para título (opcional)
-    val iconTitles = listOf("Home", "Menu", "Account","Settings")
+    val iconTitles = listOf("Home", "Quotation", "Account", "Settings")
 
-    // Componente de Row que alinha os ícones horizontalmente
+    val routes = listOf(
+        "home_screen",
+        "quotation_screen",
+        "profile_screen",
+        "config_screen"
+    )
+
+    LaunchedEffect(navController) {
+        navController.currentBackStackEntryFlow.collect { backStackEntry ->
+            val route = backStackEntry.destination.route
+            val index = routes.indexOf(route)
+            if (index != -1) {
+                selectedItem = index
+            }
+        }
+    }
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
             .background(MainBlue),
-        horizontalArrangement = Arrangement.SpaceEvenly,  // Espaçamento igual entre ícones
+        horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Loop através dos ícones para exibir e adicionar a interação de seleção
         icons.forEachIndexed { index, icon ->
             IconButton(
                 onClick = {
-                    selectedItem = index // Atualiza o ícone selecionado
+                    selectedItem = index
+                    navController.navigate(routes[index])
                 }
             ) {
                 Icon(
                     imageVector = icon,
                     contentDescription = iconTitles[index],
-                    tint = if (selectedItem == index) MainGreen else Color.White,  // Altera cor quando selecionado
-                    modifier = Modifier.size(30.dp)  // Tamanho do ícone
+                    tint = if (selectedItem == index) MainGreen else Color.White,
+                    modifier = Modifier.size(30.dp)
                 )
             }
         }

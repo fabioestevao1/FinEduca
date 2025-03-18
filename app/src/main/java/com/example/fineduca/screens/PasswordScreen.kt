@@ -52,7 +52,7 @@ fun GradientBackgroundPasswordScreen() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PasswordScreen(navController: NavHostController, onNext: (String) -> Unit) {
+fun PasswordScreen(navController: NavHostController) {
     var email by remember { mutableStateOf("") }
 
     Column(
@@ -167,8 +167,7 @@ fun PasswordScreen(navController: NavHostController, onNext: (String) -> Unit) {
                     .width(135.dp)
                     .height(50.dp)
             ) {
-                // Navega para a tela de cadastro
-                navController.navigate("register_screen")
+                navController.navigate("main_screen")
             }
 
             LightButton(
@@ -176,7 +175,6 @@ fun PasswordScreen(navController: NavHostController, onNext: (String) -> Unit) {
                     .width(135.dp)
                     .height(50.dp)
             ) {
-                // Navega para a tela de login
                 navController.navigate("login_screen")
             }
         }
