@@ -33,7 +33,7 @@ fun DarkButton(
     text: String,
     modifier: Modifier = Modifier
 ) {
-    Button(
+    Button (
         onClick = {},
         modifier = modifier,
         colors = androidx.compose.material3.ButtonDefaults.buttonColors(
