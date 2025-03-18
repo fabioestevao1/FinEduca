@@ -32,29 +32,32 @@ fun HomeScreen(navController: NavController) {
         // Conteúdo principal
         Column(
             modifier = Modifier
-                .weight(1f) // Ocupa o máximo de espaço disponível
+                .weight(1f)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TextBox(
-                title = "Título 1",
-                text = "Caixa 1 - Navegar para outra tela",
+                title = "Cotações",
+                text = "Acompanhe aqui as Cotações das Principais Moedas e Ações do Mundo",
                 onClick = { println("Caixa 1 clicada!") }
             )
+
             Spacer(modifier = Modifier.height(16.dp))
 
             TextBox(
-                title = "Título 2",
-                text = "Caixa 2 - Configurações",
+                title = "Simulação de Investimentos",
+                text = "Descubra quanto você pode ter no futuro se começar a investir hoje",
                 onClick = { println("Caixa 2 clicada!") }
             )
+
             Spacer(modifier = Modifier.height(16.dp))
 
             TextBox(
-                title = "Título 3",
-                text = "Caixa 3 - Configurações",
+                title = "Aprenda Aqui !",
+                text = "Aumente o seu Conhecimento em Finanças",
                 onClick = { println("Caixa 3 clicada!") }
             )
+
         }
 
         // Menu inferior

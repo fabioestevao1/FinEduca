@@ -48,7 +48,7 @@ fun MainScreen(navController: NavHostController) {
                 modifier = Modifier.padding(bottom = 5.dp)
             )
             Text(
-                text = "Simplificando as Finanças\n",
+                text = "Simplificando a Educação Financeira\n",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.SemiBold,
                 lineHeight = 40.sp,

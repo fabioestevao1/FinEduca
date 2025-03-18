@@ -1,6 +1,5 @@
 package com.example.fineduca.screens
 
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -9,7 +8,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -26,7 +24,7 @@ fun InformationScreen(navController: NavController) {
             .fillMaxSize()
             .background(colorResource(id = R.color.main_blue))
     ) {
-        // Menu superior com o botão de voltar
+
         Spacer(modifier = Modifier.height(40.dp))
         TopMenu()
 
@@ -35,7 +33,7 @@ fun InformationScreen(navController: NavController) {
         // Botão de voltar
         IconButton(
             onClick = {
-                navController.popBackStack() // Navegar para a tela anterior
+                navController.popBackStack()
             },
             modifier = Modifier.padding(start = 16.dp)
         ) {
@@ -49,27 +47,27 @@ fun InformationScreen(navController: NavController) {
         // Conteúdo principal
         Column(
             modifier = Modifier
-                .weight(1f) // Ocupa o máximo de espaço disponível
+                .weight(1f)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TextBox(
-                title = "Título 1",
-                text = "Caixa 1 - Navegar para outra tela",
+                title = "Juros Simples ou Compostos?",
+                text = "Descubra qual a diferença dessas duas formas de calculo de investimentos, e entenda descubra qual a melhor.",
                 onClick = { println("Caixa 1 clicada!") }
             )
             Spacer(modifier = Modifier.height(16.dp))
 
             TextBox(
-                title = "Título 2",
-                text = "Caixa 2 - Configurações",
+                title = "O que são Investimentos de Renda Fixa?",
+                text = "Aprenda sobre os tipos de investimento, e porque voce deve começar investindo em ativos de Renda Fixa.",
                 onClick = { println("Caixa 2 clicada!") }
             )
             Spacer(modifier = Modifier.height(16.dp))
 
             TextBox(
-                title = "Título 3",
-                text = "Caixa 3 - Configurações",
+                title = "Pré ou Pós fixado? Qual o melhor?",
+                text = "Qual tipo de investimento escolher? Diversos fatores devem ser levados em conta na hora de decidir em qual investir.",
                 onClick = { println("Caixa 3 clicada!") }
             )
         }

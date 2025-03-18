@@ -13,8 +13,6 @@ import com.example.fineduca.screens.*
 
 @Composable
 fun AppNavGraph(navController: NavHostController) {
-    // Remova esta linha, pois você já recebe o navController como parâmetro
-    // val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "main_screen") {
         composable("main_screen") {

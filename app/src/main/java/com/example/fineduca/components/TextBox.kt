@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.fineduca.ui.theme.MainBlue
+import com.example.fineduca.ui.theme.MainGreen
 
 @Composable
 fun TextBox(
@@ -25,8 +26,9 @@ fun TextBox(
     backgroundColor: Color = MainBlue,
     textColor: Color = Color.White,
     onClick: () -> Unit,
+    titleColor: Color =  MainGreen
 
-) {
+    ) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -46,7 +48,7 @@ fun TextBox(
                     text = title,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = textColor
+                    color = titleColor
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(

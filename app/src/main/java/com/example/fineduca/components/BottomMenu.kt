@@ -38,7 +38,7 @@ fun BottomMenu(modifier: Modifier, navController: NavController) {
 
     val routes = listOf(
         "home_screen",
-        "quotation_screen",
+        "investment_simulation_screen",
         "profile_screen",
         "config_screen"
     )
