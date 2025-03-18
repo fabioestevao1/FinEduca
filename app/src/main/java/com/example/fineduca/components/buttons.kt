@@ -33,7 +33,7 @@ fun DarkButton(
     text: String,
     modifier: Modifier = Modifier
 ) {
-    Button(
+    Button (
         onClick = {},
         modifier = modifier,
         colors = androidx.compose.material3.ButtonDefaults.buttonColors(
@@ -61,5 +61,3 @@ fun LightButton(
         Text(text = text, color = Color(0xFF242831), fontSize = 16.sp)
     }
 }
-
-
