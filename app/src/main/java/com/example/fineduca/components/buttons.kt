@@ -61,5 +61,3 @@ fun LightButton(
         Text(text = text, color = Color(0xFF242831), fontSize = 16.sp)
     }
 }
-
-
