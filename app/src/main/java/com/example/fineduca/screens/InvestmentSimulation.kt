@@ -146,8 +146,9 @@ fun InvestmentSimulation() {
             Spacer(modifier = Modifier.height(16.dp))
 
             // Exibir resultados
+            val capitalDouble = capital.toDoubleOrNull() ?: 0.0
             if (selectedCalculation == "Juros Simples") {
-                CardResultadoSimples(resultadoFinal - capital.toDoubleOrNull()!!, resultadoFinal)
+                CardResultadoSimples(resultadoFinal - capitalDouble, resultadoFinal)
             } else {
                 CardResultadoCompostos(resultadoFinal, resultadoFinal, 0.0)
             }

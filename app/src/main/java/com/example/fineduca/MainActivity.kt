@@ -27,6 +27,7 @@ import com.example.fineduca.ui.theme.FinEducaTheme
 import com.example.fineduca.ui.theme.Poppins
 import com.example.fineduca.screens.MainScreen
 import com.example.fineduca.screens.HomeScreen
+import com.example.fineduca.screens.InvestmentSimulation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainScreen();
+                    InvestmentSimulation();
                 }
             }
         }
