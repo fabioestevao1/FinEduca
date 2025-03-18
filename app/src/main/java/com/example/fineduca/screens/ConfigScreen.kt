@@ -13,12 +13,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.fineduca.R
 import com.example.fineduca.components.BottomMenu
 import com.example.fineduca.components.TopMenu
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 
 @Composable
-fun ConfigScreen() {
+fun ConfigScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -27,10 +30,22 @@ fun ConfigScreen() {
     ) {
         Spacer(modifier = Modifier.height(40.dp))
 
+        // Menu superior
         TopMenu()
 
-        Spacer(modifier = Modifier.height(16.dp))
+        // Botão de Voltar
+        IconButton(
+            onClick = { navController.popBackStack() },
+            modifier = Modifier.padding(start = 16.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Filled.ArrowBack,
+                contentDescription = "Voltar",
+                tint = Color.White
+            )
+        }
 
+        // Título da tela de configurações
         Text(
             text = "Configurações",
             fontSize = 24.sp,
@@ -40,6 +55,7 @@ fun ConfigScreen() {
 
         Spacer(modifier = Modifier.height(24.dp))
 
+        // Lista de opções de configuração
         Column(
             modifier = Modifier.fillMaxWidth(0.9f)
         ) {
@@ -74,6 +90,7 @@ fun ConfigScreen() {
 
         Spacer(modifier = Modifier.weight(1f))
 
+        // Menu inferior
         BottomMenu(
             modifier = Modifier
                 .fillMaxWidth()

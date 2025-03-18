@@ -16,9 +16,9 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.fineduca.R
 import com.example.fineduca.components.LightButton
 import com.example.fineduca.components.DarkButton
@@ -61,7 +61,7 @@ fun GradientBackgroundLoginScreen() {
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(onBack: () -> Unit, onLogin: (String, String) -> Unit) {
+fun LoginScreen(navController: NavHostController) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -245,15 +245,27 @@ fun LoginScreen(onBack: () -> Unit, onLogin: (String, String) -> Unit) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            DarkButton("Voltar", modifier = Modifier
-                .width(135.dp)
-                .height(50.dp)
-            )
+            DarkButton(
+                "Voltar", modifier = Modifier
+                    .width(135.dp)
+                    .height(50.dp)
+            ) {
+                // Navega para a tela de cadastro
+                navController.navigate("register_screen")
+            }
 
-            LightButton("Próximo", modifier = Modifier
-                .width(135.dp)
-                .height(50.dp)
-            )
+            LightButton(
+                "Próximo", modifier = Modifier
+                    .width(135.dp)
+                    .height(50.dp)
+            ) {
+                // Verifica se o email e senha estão preenchidos e navega para a tela de home
+                if (email.isNotEmpty() && password.isNotEmpty()) {
+                    navController.navigate("home_screen")  // Navega para a tela "Home"
+                } else {
+                    // Exibe um alerta ou mensagem de erro, se necessário
+                }
+            }
         }
         Spacer(modifier = Modifier.height(65.dp))
         Text(
@@ -274,4 +286,9 @@ fun LoginScreen(onBack: () -> Unit, onLogin: (String, String) -> Unit) {
             }
         )
     }
+}
+
+
+class LoginScreen {
+
 }

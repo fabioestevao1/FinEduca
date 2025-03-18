@@ -1,30 +1,54 @@
 package com.example.fineduca.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.fineduca.R
-import com.example.fineduca.calc.CalcularJurosSimples
 import com.example.fineduca.calc.CalcularJurosCompostos
+import com.example.fineduca.calc.CalcularJurosSimples
 import com.example.fineduca.calc.CalcularPreFixado
-import com.example.fineduca.components.CardResultadoSimples
+import com.example.fineduca.components.BottomMenu
 import com.example.fineduca.components.CardResultadoCompostos
+import com.example.fineduca.components.CardResultadoSimples
 import com.example.fineduca.components.DropdownMenuSelection
 import com.example.fineduca.components.InputField
 import com.example.fineduca.components.ToggleButton
 import com.example.fineduca.ui.theme.MainBlue
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InvestmentSimulation() {
+fun InvestmentSimulation(navController: NavController) {
     var capital by remember { mutableStateOf("") }
     var taxa by remember { mutableStateOf("") }
     var tempo by remember { mutableStateOf("") }
@@ -46,16 +70,29 @@ fun InvestmentSimulation() {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxWidth()
         ) {
-            // Título
-            Text(
-                text = "Simulação de Investimentos",
-                modifier = Modifier.fillMaxWidth(),
-                fontSize = 30.sp,
-                lineHeight = 30.sp,
-                color = Color.White,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
+            // Top App Bar with Back Button
+            TopAppBar(
+                title = {
+                    Text(
+                        text = "Simulação de Investimentos",
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp
+                    )
+                },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = "Voltar",
+                            tint = Color.White
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = colorResource(id = R.color.main_blue))
+
             )
+
             Spacer(modifier = Modifier.height(16.dp))
 
             // Botões para selecionar tipo de juros
@@ -168,4 +205,11 @@ fun InvestmentSimulation() {
             }
         }
     }
+
+    // Adicionar o Menu Inferior (BottomMenu)
+    BottomMenu(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    )
 }

@@ -12,13 +12,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.res.painterResource
-import com.example.fineduca.R
 import androidx.compose.foundation.layout.Arrangement
+import androidx.navigation.NavHostController
+import com.example.fineduca.R
 import com.example.fineduca.components.DarkButton
 import com.example.fineduca.components.LightButton
 
 @Composable
-fun MainScreen() {
+fun MainScreen(navController: NavHostController) {
     val backgroundImage = painterResource(id = R.drawable.home_image)
 
     Box(
@@ -61,8 +62,22 @@ fun MainScreen() {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                DarkButton("Cadastre-se", modifier = Modifier.width(150.dp))
-                LightButton("Acessar", modifier = Modifier.width(150.dp))
+                DarkButton("Cadastre-se", modifier = Modifier.width(150.dp)) {
+                    // Navega para a tela de cadastro e remove a tela anterior da pilha
+                    navController.navigate("register_screen") {
+                        // PopUp da tela anterior e volta para a tela de login
+                        popUpTo("main_screen") { inclusive = true }
+                        launchSingleTop = true // Evita múltiplas instâncias da tela
+                    }
+                }
+                LightButton("Acessar", modifier = Modifier.width(150.dp)) {
+                    // Navega para a tela de login e remove a tela anterior da pilha
+                    navController.navigate("login_screen") {
+                        // PopUp da tela anterior e volta para a tela de login
+                        popUpTo("main_screen") { inclusive = true }
+                        launchSingleTop = true // Evita múltiplas instâncias da tela
+                    }
+                }
             }
         }
     }

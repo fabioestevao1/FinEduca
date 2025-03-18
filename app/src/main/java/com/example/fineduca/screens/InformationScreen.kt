@@ -1,32 +1,50 @@
 package com.example.fineduca.screens
+
+import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import com.example.fineduca.R
 import com.example.fineduca.components.BottomMenu
 import com.example.fineduca.components.TextBox
 import com.example.fineduca.components.TopMenu
+import androidx.navigation.NavController
 
 @Composable
-fun InformationScreen() {
+fun InformationScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.main_blue))
     ) {
-        // Menu superior
+        // Menu superior com o botão de voltar
         Spacer(modifier = Modifier.height(40.dp))
         TopMenu()
+
         Spacer(modifier = Modifier.height(20.dp))
+
+        // Botão de voltar
+        IconButton(
+            onClick = {
+                navController.popBackStack() // Navegar para a tela anterior
+            },
+            modifier = Modifier.padding(start = 16.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Filled.ArrowBack,
+                contentDescription = "Voltar",
+                tint = Color.White
+            )
+        }
 
         // Conteúdo principal
         Column(

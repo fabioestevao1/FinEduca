@@ -31,7 +31,8 @@ fun CustomButton(
 @Composable
 fun DarkButton(
     text: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    function: () -> Unit
 ) {
     Button (
         onClick = {},
@@ -48,7 +49,8 @@ fun DarkButton(
 @Composable
 fun LightButton(
     text: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    function: () -> Unit
 ) {
     Button(
         onClick = {},

@@ -13,17 +13,23 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.fineduca.R
 import com.example.fineduca.model.CurrencyResponse
 import com.example.fineduca.network.RetrofitClient
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import com.example.fineduca.components.BottomMenu
 import com.example.fineduca.components.TopMenu
 import java.net.UnknownHostException
 
 @Composable
-fun QuotationScreen() {
+fun QuotationScreen(navController: NavController) {
     var currencyData by remember { mutableStateOf<CurrencyResponse?>(null) }
     var isLoading by remember { mutableStateOf(true) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
@@ -54,7 +60,18 @@ fun QuotationScreen() {
         // Menu superior
         Spacer(modifier = Modifier.height(40.dp))
         TopMenu()
-        Spacer(modifier = Modifier.height(20.dp))
+
+        // Botão de Voltar
+        IconButton(
+            onClick = { navController.popBackStack() },
+            modifier = Modifier.padding(start = 16.dp)
+        ) {
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                contentDescription = "Voltar",
+                tint = Color.White
+            )
+        }
 
         // Conteúdo principal
         Column(
@@ -92,6 +109,7 @@ fun QuotationScreen() {
                 }
             }
         }
+
         BottomMenu(
             modifier = Modifier
                 .fillMaxWidth()

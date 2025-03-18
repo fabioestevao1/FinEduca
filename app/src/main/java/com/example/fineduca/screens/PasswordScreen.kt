@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.fineduca.R
 import com.example.fineduca.components.DarkButton
 import com.example.fineduca.components.LightButton
@@ -48,9 +49,10 @@ fun GradientBackgroundPasswordScreen() {
         )
     }
 }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PasswordScreen(onBack: () -> Unit, onNext: (String) -> Unit) {
+fun PasswordScreen(navController: NavHostController, onNext: (String) -> Unit) {
     var email by remember { mutableStateOf("") }
 
     Column(
@@ -160,15 +162,23 @@ fun PasswordScreen(onBack: () -> Unit, onNext: (String) -> Unit) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            DarkButton("Voltar", modifier = Modifier
-                .width(135.dp)
-                .height(50.dp)
-            )
+            DarkButton(
+                "Voltar", modifier = Modifier
+                    .width(135.dp)
+                    .height(50.dp)
+            ) {
+                // Navega para a tela de cadastro
+                navController.navigate("register_screen")
+            }
 
-            LightButton("Próximo", modifier = Modifier
-                .width(135.dp)
-                .height(50.dp)
-            )
+            LightButton(
+                "Próximo", modifier = Modifier
+                    .width(135.dp)
+                    .height(50.dp)
+            ) {
+                // Navega para a tela de login
+                navController.navigate("login_screen")
+            }
         }
     }
 }
