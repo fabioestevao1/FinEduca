@@ -1,38 +1,37 @@
 package com.example.fineduca.calc
-fun calcularJurosCompostos(
+
+import kotlin.math.pow
+
+fun CalcularJurosCompostos(
     capital: Double,
     cdi: Double,
     percentualCDI: Double,
-    tempo: Double, // Tempo em meses
+    tempo: Int, // Tempo em meses
     tipoInvestimento: String,
     preFixado: Boolean,
     taxa: Double = 0.0 // Opcional para pré-fixado
 ): Triple<Double, Double, Double> {
-    // Definir a alíquota do imposto de renda com base no tempo
+
     val aliquotaIR = when {
-        tempo <= 6 -> 0.225  // Até 6 meses: 22,5%
-        tempo > 6 && tempo <= 12 -> 0.20  // De 6 a 12 meses: 20%
-        tempo > 12 && tempo <= 24 -> 0.175 // De 12 a 24 meses: 17,5%
-        else -> 0.15  // Acima de 24 meses: 15%
+        tempo <= 6 -> 0.225
+        tempo <= 12 -> 0.20
+        tempo <= 24 -> 0.175
+        else -> 0.15
     }
 
-    // Calcula a taxa com base no CDI ou usa a taxa fixa se for pré-fixado
-    val taxa = if (preFixado) {
-        taxa / 100
+    val taxaMensal = if (preFixado) {
+        (1 + taxa / 100).pow(1.0 / 12) - 1  // Correta conversão da taxa anual para mensal
     } else {
-        (cdi * (percentualCDI / 100)) / 100
+        (1 + (cdi * (percentualCDI / 100)) / 100).pow(1.0 / 12) - 1  // CDI convertido para taxa mensal
     }
 
-    // Montante bruto
-    val montanteBruto = capital * Math.pow(1 + taxa, tempo / 12) // Convertendo meses para anos
+    val montanteBruto = capital * (1 + taxaMensal).pow(tempo)  // Aplicando a fórmula correta
 
-    // Calcula imposto apenas para investimentos que não são isentos
     val impostoEstimado = when (tipoInvestimento.lowercase()) {
         "lci", "lca", "poupança" -> 0.0
         else -> (montanteBruto - capital) * aliquotaIR
     }
 
-    // Montante líquido (com imposto descontado)
     val montanteLiquido = montanteBruto - impostoEstimado
 
     return Triple(montanteBruto, montanteLiquido, impostoEstimado)

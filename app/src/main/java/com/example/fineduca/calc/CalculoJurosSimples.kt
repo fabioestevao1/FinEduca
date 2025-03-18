@@ -1,13 +1,13 @@
 package com.example.fineduca.calc
-
-fun calcularJurosSimples(
+fun CalcularJurosSimples(
     capital: Double,
-    taxa: Double,
-    tempo: Double
+    taxa: Double,  // Taxa fornecida em % ao ano
+    tempo: Int  // Tempo fornecido em meses
 ): Double {
-    return capital * taxa /100 * tempo
+    val taxaMensal = taxa / 12 / 100  // Convertendo taxa anual para mensal (simples)
+    return capital * taxaMensal * tempo
 }
 
-fun calcularMontante(capital: Double, juros:Double): Double {
-    return capital+juros
+fun CalcularMontante(capital: Double, juros: Double): Double {
+    return capital + juros
 }

@@ -8,17 +8,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.fineduca.R
-import com.example.fineduca.calc.calcularJurosCompostos
-import com.example.fineduca.calc.calcularJurosSimples
-import com.example.fineduca.calc.calcularMontante
-import com.example.fineduca.components.CardResultadoCompostos
+import com.example.fineduca.calc.CalcularJurosSimples
+import com.example.fineduca.calc.CalcularJurosCompostos
+import com.example.fineduca.calc.CalcularPreFixado
 import com.example.fineduca.components.CardResultadoSimples
+import com.example.fineduca.components.CardResultadoCompostos
+import com.example.fineduca.components.DropdownMenuSelection
+import com.example.fineduca.components.InputField
+import com.example.fineduca.components.ToggleButton
 
 @Composable
 fun InvestmentSimulation() {
@@ -27,16 +29,10 @@ fun InvestmentSimulation() {
     var tempo by remember { mutableStateOf("") }
     var cdi by remember { mutableStateOf("") }
     var percentualCDI by remember { mutableStateOf("") }
-    var tipoInvestimento by remember { mutableStateOf("LCI") }
+    var tipoInvestimento by remember { mutableStateOf("LCI/LCA") }
     var preFixado by remember { mutableStateOf(false) }
-
-    var jurosSimples by remember { mutableStateOf(0.0) }
-    var montanteSimples by remember { mutableStateOf(0.0) }
-    var montanteBruto by remember { mutableStateOf(0.0) }
-    var montanteLiquido by remember { mutableStateOf(0.0) }
-    var impostoEstimado by remember { mutableStateOf(0.0) }
-
     var selectedCalculation by remember { mutableStateOf("Juros Simples") }
+    var resultadoFinal by remember { mutableStateOf(0.0) }
 
     Box(
         modifier = Modifier
@@ -45,7 +41,10 @@ fun InvestmentSimulation() {
             .padding(16.dp),
         contentAlignment = Alignment.Center
     ) {
-        Column {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth()
+        ) {
             // Título
             Text(
                 text = "Simulação de Investimentos",
@@ -58,117 +57,99 @@ fun InvestmentSimulation() {
             )
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Seleção entre Juros Simples e Compostos
-            DropdownMenuSelection(
-                options = listOf("Juros Simples", "Juros Compostos"),
-                selectedOption = selectedCalculation,
-                onOptionSelected = { selectedCalculation = it }
-            )
+            // Botões para selecionar tipo de juros
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                ToggleButton(
+                    text = "Juros Simples",
+                    isSelected = selectedCalculation == "Juros Simples",
+                    onClick = { selectedCalculation = "Juros Simples" }
+                )
+                ToggleButton(
+                    text = "Juros Compostos",
+                    isSelected = selectedCalculation == "Juros Compostos",
+                    onClick = { selectedCalculation = "Juros Compostos" }
+                )
+            }
+
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Entrada de dados
+            // Campos de entrada para valores
             InputField("Capital", capital) { capital = it }
             InputField("Taxa (%)", taxa) { taxa = it }
             InputField("Tempo (meses)", tempo) { tempo = it }
 
+            // Campos específicos para "Juros Compostos"
             if (selectedCalculation == "Juros Compostos") {
-                InputField("CDI", cdi) { cdi = it }
-                InputField("Percentual do CDI", percentualCDI) { percentualCDI = it }
+                DropdownMenuSelection(
+                    options = listOf("LCI/LCA", "CDB", "Poupança", "Fundo de Investimento"),
+                    selectedOption = tipoInvestimento,
+                    onOptionSelected = { tipoInvestimento = it }
+                )
 
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                if (!preFixado) {
+                    InputField("CDI", cdi) { cdi = it }
+                    InputField("Percentual do CDI", percentualCDI) { percentualCDI = it }
+                }
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(vertical = 8.dp)
+                ) {
                     Checkbox(
                         checked = preFixado,
                         onCheckedChange = { preFixado = it }
                     )
-                    Text("Pré-fixado", color = Color.White)
+                    Text("Pré-fixado", color = Color.White, modifier = Modifier.padding(start = 8.dp))
                 }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Botão para Calcular
-            Button(onClick = {
-                if (selectedCalculation == "Juros Simples") {
-                    jurosSimples = calcularJurosSimples(
-                        capital.toDoubleOrNull() ?: 0.0,
-                        taxa.toDoubleOrNull() ?: 0.0,
-                        tempo.toDoubleOrNull() ?: 0.0
-                    )
-                    montanteSimples = calcularMontante(capital.toDoubleOrNull() ?: 0.0, jurosSimples)
-                } else {
-                    val resultado = calcularJurosCompostos(
-                        capital.toDoubleOrNull() ?: 0.0,
-                        cdi.toDoubleOrNull() ?: 0.0,
-                        percentualCDI.toDoubleOrNull() ?: 0.0,
-                        tempo.toDoubleOrNull() ?: 0.0,
-                        tipoInvestimento,
-                        preFixado,
-                        taxa.toDoubleOrNull() ?: 0.0
-                    )
-                    montanteBruto = resultado.first
-                    montanteLiquido = resultado.second
-                    impostoEstimado = resultado.third
-                }
-            }) {
-                Text("Calcular", color = Color.White)
+            // Botão para calcular
+            Button(
+                onClick = {
+                    val capitalValue = capital.toDoubleOrNull() ?: 0.0
+                    val taxaValue = taxa.toDoubleOrNull() ?: 0.0
+                    val tempoValue = tempo.toIntOrNull() ?: 0
+
+                    if (capitalValue != 0.0 && taxaValue != 0.0 && tempoValue != 0) {
+                        if (selectedCalculation == "Juros Simples") {
+                            val juros = CalcularJurosSimples(capitalValue, taxaValue, tempoValue)
+                            val montante = capitalValue + juros
+                            resultadoFinal = montante
+                        } else if (selectedCalculation == "Juros Compostos") {
+                            if (preFixado) {
+                                val (montanteBruto, montanteLiquido, imposto) = CalcularPreFixado(capitalValue, taxaValue, tempoValue)
+                                resultadoFinal = montanteLiquido
+                            } else {
+                                val cdiDouble = cdi.toDoubleOrNull() ?: 0.0
+                                val percentualCDIDouble = percentualCDI.toDoubleOrNull() ?: 0.0
+                                val (montanteBruto, montanteLiquido, imposto) = CalcularJurosCompostos(
+                                    capitalValue, cdiDouble, percentualCDIDouble, tempoValue, tipoInvestimento, preFixado
+                                )
+                                resultadoFinal = montanteLiquido
+                            }
+                        }
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth(0.7f)
+                    .height(50.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.main_green))
+            ) {
+                Text("Calcular", color = Color.White, fontSize = 18.sp)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Exibição do resultado
+            // Exibir resultados
             if (selectedCalculation == "Juros Simples") {
-                CardResultadoSimples(juros = jurosSimples, montante = montanteSimples)
+                CardResultadoSimples(resultadoFinal - capital.toDoubleOrNull()!!, resultadoFinal)
             } else {
-                CardResultadoCompostos(montanteBruto = montanteBruto, montanteLiquido = montanteLiquido, imposto = impostoEstimado)
-            }
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun InputField(label: String, value: String, onValueChange: (String) -> Unit) {
-    OutlinedTextField(
-        value = value,
-        onValueChange = { newValue -> onValueChange(newValue) },
-        label = { Text(label, color = Color.White) }, // Cor do texto do rótulo
-        textStyle = TextStyle(color = Color.White), // Cor do texto inserido
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom = 8.dp),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = Color.White,
-            unfocusedBorderColor = Color.Gray,
-            focusedLabelColor = Color.White,
-            unfocusedLabelColor = Color.Gray,
-            cursorColor = Color.White
-        )
-    )
-}
-
-
-
-@Composable
-fun DropdownMenuSelection(
-    options: List<String>,
-    selectedOption: String,
-    onOptionSelected: (String) -> Unit
-) {
-    var expanded by remember { mutableStateOf(false) }
-
-    Box {
-        Button(onClick = { expanded = true }, colors = ButtonDefaults.buttonColors(containerColor = Color.Gray)) {
-            Text(selectedOption, color = Color.White)
-        }
-        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-            options.forEach { option ->
-                DropdownMenuItem(
-                    onClick = {
-                        onOptionSelected(option)
-                        expanded = false
-                    },
-                    text = { Text(option, color = Color.Black) }
-                )
+                CardResultadoCompostos(resultadoFinal, resultadoFinal, 0.0)
             }
         }
     }

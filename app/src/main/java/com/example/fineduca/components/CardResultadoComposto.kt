@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.fineduca.ui.theme.MainBlue
 import com.example.fineduca.ui.theme.MainGreen
+
 @Composable
 fun CardResultadoCompostos(montanteBruto: Double, montanteLiquido: Double, imposto: Double) {
     Card(
@@ -37,13 +38,13 @@ fun CardResultadoCompostos(montanteBruto: Double, montanteLiquido: Double, impos
                     modifier = Modifier.padding(end = 8.dp),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White  // Garantir que o texto seja branco
+                    color = Color.White
                 )
                 Text(
                     text = "R$ %.2f".format(montanteBruto),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MainGreen  // Manter a cor MainGreen
+                    color = MainGreen
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
@@ -53,13 +54,13 @@ fun CardResultadoCompostos(montanteBruto: Double, montanteLiquido: Double, impos
                     modifier = Modifier.padding(end = 8.dp),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White  // Garantir que o texto seja branco
+                    color = Color.White
                 )
                 Text(
                     text = "R$ %.2f".format(imposto),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MainGreen  // Manter a cor MainGreen
+                    color = MainGreen
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
@@ -69,13 +70,13 @@ fun CardResultadoCompostos(montanteBruto: Double, montanteLiquido: Double, impos
                     modifier = Modifier.padding(end = 8.dp),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White  // Garantir que o texto seja branco
+                    color = Color.White
                 )
                 Text(
                     text = "R$ %.2f".format(montanteLiquido),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MainGreen  // Manter a cor MainGreen
+                    color = MainGreen
                 )
             }
         }

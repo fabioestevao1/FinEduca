@@ -38,13 +38,13 @@ fun CardResultadoSimples(juros: Double, montante: Double) {
                     modifier = Modifier.padding(end = 8.dp),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White  // Garantir que o texto seja branco
+                    color = Color.White
                 )
                 Text(
                     text = "R$ %.2f".format(juros),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MainGreen  // Manter a cor MainGreen
+                    color = MainGreen
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
@@ -54,13 +54,13 @@ fun CardResultadoSimples(juros: Double, montante: Double) {
                     modifier = Modifier.padding(end = 8.dp),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White  // Garantir que o texto seja branco
+                    color = Color.White
                 )
                 Text(
                     text = "R$ %.2f".format(montante),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MainGreen  // Manter a cor MainGreen
+                    color = MainGreen
                 )
             }
         }
