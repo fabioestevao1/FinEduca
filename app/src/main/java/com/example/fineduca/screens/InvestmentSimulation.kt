@@ -21,6 +21,7 @@ import com.example.fineduca.components.CardResultadoCompostos
 import com.example.fineduca.components.DropdownMenuSelection
 import com.example.fineduca.components.InputField
 import com.example.fineduca.components.ToggleButton
+import com.example.fineduca.ui.theme.MainBlue
 
 @Composable
 fun InvestmentSimulation() {
@@ -102,7 +103,11 @@ fun InvestmentSimulation() {
                         checked = preFixado,
                         onCheckedChange = { preFixado = it }
                     )
-                    Text("Pré-fixado", color = Color.White, modifier = Modifier.padding(start = 8.dp))
+                    Text(
+                        "Pré-fixado",
+                        color = Color.White,
+                        modifier = Modifier.padding(start = 8.dp)
+                    )
                 }
             }
 
@@ -122,13 +127,22 @@ fun InvestmentSimulation() {
                             resultadoFinal = montante
                         } else if (selectedCalculation == "Juros Compostos") {
                             if (preFixado) {
-                                val (montanteBruto, montanteLiquido, imposto) = CalcularPreFixado(capitalValue, taxaValue, tempoValue)
+                                val (montanteBruto, montanteLiquido, imposto) = CalcularPreFixado(
+                                    capitalValue,
+                                    taxaValue,
+                                    tempoValue
+                                )
                                 resultadoFinal = montanteLiquido
                             } else {
                                 val cdiDouble = cdi.toDoubleOrNull() ?: 0.0
                                 val percentualCDIDouble = percentualCDI.toDoubleOrNull() ?: 0.0
                                 val (montanteBruto, montanteLiquido, imposto) = CalcularJurosCompostos(
-                                    capitalValue, cdiDouble, percentualCDIDouble, tempoValue, tipoInvestimento, preFixado
+                                    capitalValue,
+                                    cdiDouble,
+                                    percentualCDIDouble,
+                                    tempoValue,
+                                    tipoInvestimento,
+                                    preFixado
                                 )
                                 resultadoFinal = montanteLiquido
                             }
@@ -140,7 +154,7 @@ fun InvestmentSimulation() {
                     .height(50.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.main_green))
             ) {
-                Text("Calcular", color = Color.White, fontSize = 18.sp)
+                Text("Calcular", color = MainBlue, fontSize = 18.sp)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
