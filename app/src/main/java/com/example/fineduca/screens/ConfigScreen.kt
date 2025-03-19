@@ -30,10 +30,8 @@ fun ConfigScreen(navController: NavController) {
     ) {
         Spacer(modifier = Modifier.height(40.dp))
 
-        // Menu superior
         TopMenu()
 
-        // Título da tela de configurações
         Text(
             text = "Configurações",
             fontSize = 24.sp,
@@ -43,7 +41,6 @@ fun ConfigScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Lista de opções de configuração
         Column(
             modifier = Modifier.fillMaxWidth(0.9f)
         ) {
@@ -76,18 +73,16 @@ fun ConfigScreen(navController: NavController) {
             )
         }
 
-        // Botão de Logout
         Button(
             onClick = {
-                // Redireciona para a tela principal (main_screen)
                 navController.navigate("main_screen")
             },
             modifier = Modifier
                 .fillMaxWidth(0.9f)
                 .padding(vertical = 16.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Red, // Cor de fundo vermelha
-                contentColor = Color.White // Cor do texto branco
+                containerColor = Color.Red,
+                contentColor = Color.White
             )
         ) {
             Icon(
@@ -101,7 +96,6 @@ fun ConfigScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.weight(1f))
 
-        // Menu inferior
         BottomMenu(
             modifier = Modifier
                 .fillMaxWidth()

@@ -39,7 +39,7 @@ fun HomeScreen(navController: NavController) {
             TextBox(
                 title = "Cotações",
                 text = "Acompanhe aqui as Cotações das Principais Moedas e Ações do Mundo",
-                onClick = { println("Caixa 1 clicada!") }
+                onClick = { navController.navigate("quotation_screen") }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -47,7 +47,7 @@ fun HomeScreen(navController: NavController) {
             TextBox(
                 title = "Simulação de Investimentos",
                 text = "Descubra quanto você pode ter no futuro se começar a investir hoje",
-                onClick = { println("Caixa 2 clicada!") }
+                onClick = { navController.navigate("investment_simulation_screen") }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -55,7 +55,7 @@ fun HomeScreen(navController: NavController) {
             TextBox(
                 title = "Aprenda Aqui !",
                 text = "Aumente o seu Conhecimento em Finanças",
-                onClick = { println("Caixa 3 clicada!") }
+                onClick = { navController.navigate("information_screen") }
             )
 
         }

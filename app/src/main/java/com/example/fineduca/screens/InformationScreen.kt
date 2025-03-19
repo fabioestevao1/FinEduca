@@ -30,21 +30,6 @@ fun InformationScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Botão de voltar
-        IconButton(
-            onClick = {
-                navController.popBackStack()
-            },
-            modifier = Modifier.padding(start = 16.dp)
-        ) {
-            Icon(
-                imageVector = Icons.Filled.ArrowBack,
-                contentDescription = "Voltar",
-                tint = Color.White
-            )
-        }
-
-        // Conteúdo principal
         Column(
             modifier = Modifier
                 .weight(1f)
@@ -72,7 +57,6 @@ fun InformationScreen(navController: NavController) {
             )
         }
 
-        // Menu inferior
         BottomMenu(
             modifier = Modifier
                 .fillMaxWidth()

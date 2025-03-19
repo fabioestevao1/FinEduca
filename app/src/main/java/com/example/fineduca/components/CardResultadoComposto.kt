@@ -26,7 +26,7 @@ fun CardResultadoCompostos(montanteBruto: Double, montanteLiquido: Double, impos
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "Resultado utilizando Juros Compostos",
+                text = "Resultado utilizando Juros Compostos:",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White

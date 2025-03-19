@@ -23,7 +23,6 @@ fun TopMenu() {
             .padding(horizontal = 16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
-        // Saudação à esquerda
         Text(
             text = "Olá, João",
             fontSize = 24.sp,
@@ -31,7 +30,6 @@ fun TopMenu() {
             color = Color.White
         )
 
-        // Nível à direita
         Column(
             horizontalAlignment = Alignment.End
         ) {

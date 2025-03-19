@@ -19,7 +19,7 @@ fun InputField(label: String, value: String, onValueChange: (String) -> Unit) {
         label = { Text(label, color = Color.White) },
         textStyle = TextStyle(color = Color.White),
         modifier = Modifier
-            .fillMaxWidth() // Garantindo que o campo ocupe toda a largura disponível
+            .fillMaxWidth()
             .padding(bottom = 8.dp),
         colors = TextFieldDefaults.colors(
             focusedTextColor = Color.White,

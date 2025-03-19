@@ -32,10 +32,10 @@ fun CustomButton(
 fun DarkButton(
     text: String,
     modifier: Modifier = Modifier,
-    function: () -> Unit // Função lambda recebida como parâmetro
+    function: () -> Unit
 ) {
     Button(
-        onClick = function, // Passando a função lambda para o onClick
+        onClick = function,
         modifier = modifier,
         colors = androidx.compose.material3.ButtonDefaults.buttonColors(
             containerColor = Color(0xFF384B65)
@@ -50,10 +50,10 @@ fun DarkButton(
 fun LightButton(
     text: String,
     modifier: Modifier = Modifier,
-    function: () -> Unit // Função lambda recebida como parâmetro
+    function: () -> Unit
 ) {
     Button(
-        onClick = function, // Passando a função lambda para o onClick
+        onClick = function,
         modifier = modifier,
         colors = androidx.compose.material3.ButtonDefaults.buttonColors(
             containerColor = Color(0xFF8EFE03)

@@ -30,11 +30,11 @@ fun GradientBackgroundRegisterScreen() {
             .background(
                 brush = Brush.linearGradient(
                     colors = listOf(
-                        Color(0xFF242831), // Cor escura
-                        Color(0xFF384B65), // Cor mais clara
-                        Color(0xFFBEFE03), // Cor verde
-                        Color(0xFF8EFE03),  // Outra cor verde
-                        Color(0xFFC4C4CC)   // Cor cinza
+                        Color(0xFF242831),
+                        Color(0xFF384B65),
+                        Color(0xFFBEFE03),
+                        Color(0xFF8EFE03),
+                        Color(0xFFC4C4CC)
                     )
                 )
             )
@@ -45,8 +45,8 @@ fun GradientBackgroundRegisterScreen() {
                 .background(
                     brush = Brush.linearGradient(
                         colors = listOf(
-                            Color(0xFF242831).copy(alpha = 0.2f), // Camada escura com 20% de opacidade
-                            Color.Transparent // Transparente para manter a base visível
+                            Color(0xFF242831).copy(alpha = 0.2f),
+                            Color.Transparent
                         )
                     )
                 )
@@ -74,8 +74,8 @@ fun RegisterScreen(navController: NavController) {
             text = "FinEduca",
             color = Color.White,
             style = MaterialTheme.typography.headlineMedium.copy(
-                fontFamily = poppinsFontFamily, // Aplica a fonte Poppins
-                fontWeight = FontWeight.Bold // Aplica o negrito
+                fontFamily = poppinsFontFamily,
+                fontWeight = FontWeight.Bold
             ),
             modifier = Modifier.padding(top = 80.dp)
         )
@@ -99,7 +99,6 @@ fun RegisterScreen(navController: NavController) {
             )
         )
         Spacer(modifier = Modifier.height(8.dp))
-        // Campo de nome
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -107,7 +106,6 @@ fun RegisterScreen(navController: NavController) {
             verticalAlignment = Alignment.CenterVertically
 
         ) {
-            // Rótulo "Nome"
             Text(
                 text = "Nome",
                 color = Color.White,
@@ -116,7 +114,6 @@ fun RegisterScreen(navController: NavController) {
                 modifier = Modifier.padding(end = 8.dp)
             )
 
-            // Campo de texto com placeholder e linha
             Column(
                 modifier = Modifier.weight(1f)
             ) {
@@ -151,7 +148,6 @@ fun RegisterScreen(navController: NavController) {
                     singleLine = true
                 )
 
-                // Linha branca
                 Divider(
                     color = Color.White,
                     thickness = 1.dp,
@@ -168,7 +164,6 @@ fun RegisterScreen(navController: NavController) {
                 .padding(vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Rótulo "Email"
             Text(
                 text = "Email",
                 color = Color.White,
@@ -177,7 +172,6 @@ fun RegisterScreen(navController: NavController) {
                 modifier = Modifier.padding(end = 8.dp)
             )
 
-            // Campo de texto com placeholder e linha
             Column(
                 modifier = Modifier.weight(1f)
             ) {
@@ -212,7 +206,6 @@ fun RegisterScreen(navController: NavController) {
                     singleLine = true
                 )
 
-                // Linha branca
                 Divider(
                     color = Color.White,
                     thickness = 1.dp,
@@ -229,7 +222,6 @@ fun RegisterScreen(navController: NavController) {
                 .padding(vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Rótulo "Senha"
             Text(
                 text = "Senha",
                 color = Color.White,
@@ -238,7 +230,6 @@ fun RegisterScreen(navController: NavController) {
                 modifier = Modifier.padding(end = 8.dp)
             )
 
-            // Campo de texto com placeholder e linha
             Column(
                 modifier = Modifier.weight(1f)
             ) {
@@ -271,10 +262,9 @@ fun RegisterScreen(navController: NavController) {
                         }
                     },
                     singleLine = true,
-                    visualTransformation = PasswordVisualTransformation() // Oculta a senha
+                    visualTransformation = PasswordVisualTransformation()
                 )
 
-                // Linha branca
                 Divider(
                     color = Color.White,
                     thickness = 1.dp,
@@ -285,7 +275,6 @@ fun RegisterScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(50.dp))
 
-        // Checkbox de termos
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -317,7 +306,6 @@ fun RegisterScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(75.dp))
 
-        //Botões "Voltar" e "Próximo"
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween

@@ -35,7 +35,6 @@ fun QuotationScreen(navController: NavController) {
     var errorMessage by remember { mutableStateOf<String?>(null) }
     val coroutineScope = rememberCoroutineScope()
 
-    // Buscar dados da API ao iniciar a tela
     LaunchedEffect(Unit) {
         coroutineScope.launch {
             try {
@@ -57,11 +56,9 @@ fun QuotationScreen(navController: NavController) {
             .fillMaxSize()
             .background(colorResource(id = R.color.main_blue))
     ) {
-        // Menu superior
         Spacer(modifier = Modifier.height(40.dp))
         TopMenu()
 
-        // Conteúdo principal
         Column(
             modifier = Modifier
                 .weight(1f)
@@ -118,11 +115,11 @@ fun CurrencyCard(
             .fillMaxWidth()
             .padding(8.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFF8EFE03) // Cor de fundo do card
+            containerColor = Color(0xFF8EFE03)
         ),
-        shape = RoundedCornerShape(12.dp), // Bordas arredondadas
+        shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 8.dp // Sombra
+            defaultElevation = 8.dp
         )
     ) {
         Column(
@@ -131,20 +128,20 @@ fun CurrencyCard(
         ) {
             Text(
                 text = currencyCode,
-                color = Color.Black, // Cor do texto em branco
+                color = Color.Black,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = currencyName,
-                color = Color.Black, // Cor do texto em branco
+                color = Color.Black,
                 fontSize = 16.sp
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "Valor: R$ $bidValue",
-                color = Color.Black, // Cor do texto em branco
+                color = Color.Black,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Medium
             )

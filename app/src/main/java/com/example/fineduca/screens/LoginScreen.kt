@@ -117,7 +117,6 @@ fun LoginScreen(navController: NavHostController) {
                 modifier = Modifier.padding(end = 8.dp)
             )
 
-            // Campo de texto com placeholder e linha
             Column(
                 modifier = Modifier.weight(1f)
             ) {
@@ -152,7 +151,6 @@ fun LoginScreen(navController: NavHostController) {
                     singleLine = true
                 )
 
-                // Linha branca
                 Divider(
                     color = Color.White,
                     thickness = 1.dp,
@@ -169,7 +167,6 @@ fun LoginScreen(navController: NavHostController) {
                 .padding(vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Rótulo "Senha"
             Text(
                 text = "Senha",
                 color = Color.White,
@@ -178,7 +175,6 @@ fun LoginScreen(navController: NavHostController) {
                 modifier = Modifier.padding(end = 8.dp)
             )
 
-            // Campo de texto com placeholder e linha
             Column(
                 modifier = Modifier.weight(1f)
             ) {
@@ -211,10 +207,9 @@ fun LoginScreen(navController: NavHostController) {
                         }
                     },
                     singleLine = true,
-                    visualTransformation = PasswordVisualTransformation() // Oculta a senha
+                    visualTransformation = PasswordVisualTransformation()
                 )
 
-                // Linha branca
                 Divider(
                     color = Color.White,
                     thickness = 1.dp,

@@ -10,17 +10,15 @@ fun validarDados(
     percentualCDI: String?,
     tipoInvestimento: String,
     preFixado: Boolean,
-    mensagemErro: MutableState<String> // Agora é MutableState
+    mensagemErro: MutableState<String>
 ): Boolean {
-    mensagemErro.value = ""  // Limpar qualquer mensagem de erro anterior
+    mensagemErro.value = ""
 
-    // Verificar se campos básicos (capital, taxa e tempo) estão preenchidos
     if (capital.isEmpty() || taxa.isEmpty() || tempo.isEmpty()) {
         mensagemErro.value = "Por favor, preencha todos os campos obrigatórios."
         return false
     }
 
-    // Tentar converter os valores para Double e verificar se são válidos
     try {
         val capitalDouble = capital.toDoubleOrNull() ?: return false.apply {
             mensagemErro.value = "Capital deve ser um número válido."
@@ -37,7 +35,6 @@ fun validarDados(
             return false
         }
 
-        // Verificação adicional para CDI e percentualCDI, se necessário
         if (tipoInvestimento != "LCI/LCA" && tipoInvestimento != "Poupança") {
             if (cdi.isNullOrEmpty() || percentualCDI.isNullOrEmpty()) {
                 mensagemErro.value = "Por favor, preencha o CDI e o Percentual do CDI."
@@ -56,7 +53,6 @@ fun validarDados(
             }
         }
 
-        // Se for pré-fixado, não precisamos de CDI e Percentual do CDI
         if (preFixado && (cdi?.isNotEmpty() == true || percentualCDI?.isNotEmpty() == true)) {
             mensagemErro.value = "Você selecionou pré-fixado, portanto não precisa informar o CDI e o Percentual do CDI."
             return false
@@ -67,6 +63,5 @@ fun validarDados(
         return false
     }
 
-    // Se todas as validações passarem
     return true
 }

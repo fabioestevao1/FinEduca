@@ -22,17 +22,17 @@ fun DropdownMenuSelection(
 ) {
     var expanded by remember { mutableStateOf(false) }
 
-    Box(modifier = Modifier.fillMaxWidth()) { // Alterei para fillMaxWidth() para ocupar toda a largura
+    Box(modifier = Modifier.fillMaxWidth()) {
         Button(
             onClick = { expanded = true },
-            modifier = Modifier.fillMaxWidth() // Agora o botão ocupa toda a largura
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text(selectedOption, color = Color.White)
         }
         DropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false },
-            modifier = Modifier.fillMaxWidth() // O menu de dropdown também irá ocupar toda a largura
+            modifier = Modifier.fillMaxWidth()
         ) {
             options.forEach { option ->
                 DropdownMenuItem(

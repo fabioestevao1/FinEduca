@@ -26,11 +26,11 @@ fun GradientBackgroundPasswordScreen() {
             .background(
                 brush = Brush.linearGradient(
                     colors = listOf(
-                        Color(0xFF242831), // Cor escura
-                        Color(0xFF384B65), // Cor mais clara
-                        Color(0xFFBEFE03), // Cor verde
-                        Color(0xFF8EFE03),  // Outra cor verde
-                        Color(0xFFC4C4CC)   // Cor cinza
+                        Color(0xFF242831),
+                        Color(0xFF384B65),
+                        Color(0xFFBEFE03),
+                        Color(0xFF8EFE03),
+                        Color(0xFFC4C4CC)
                     )
                 )
             )
@@ -41,8 +41,8 @@ fun GradientBackgroundPasswordScreen() {
                 .background(
                     brush = Brush.linearGradient(
                         colors = listOf(
-                            Color(0xFF242831).copy(alpha = 0.2f), // Camada escura com 20% de opacidade
-                            Color.Transparent // Transparente para manter a base visível
+                            Color(0xFF242831).copy(alpha = 0.2f),
+                            Color.Transparent
                         )
                     )
                 )
@@ -63,20 +63,18 @@ fun PasswordScreen(navController: NavHostController) {
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Título principal
         Text(
             text = "Esqueceu a Senha?",
             color = Color.White,
             style = MaterialTheme.typography.headlineMedium.copy(
-                fontFamily = poppinsFontFamily, // Aplica a fonte Poppins
-                fontWeight = FontWeight.Bold // Aplica o negrito
+                fontFamily = poppinsFontFamily,
+                fontWeight = FontWeight.Bold
             ),
             modifier = Modifier.padding(top = 80.dp)
         )
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        // Instrução
         Text(
             text = "Digite sua conta de e-mail para redefinir sua senha",
             color = Color.White,
@@ -86,23 +84,21 @@ fun PasswordScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(90.dp))
 
         Image(
-            painter = painterResource(id = R.drawable.carta), // Substitua "carta" pelo nome da sua imagem
-            contentDescription = "Imagem de uma carta", // Descrição para acessibilidade
+            painter = painterResource(id = R.drawable.carta),
+            contentDescription = "Imagem de uma carta",
             modifier = Modifier
-                .size(175.dp) // Define o tamanho da imagem
-                .padding(8.dp) // Adiciona um espaçamento ao redor da imagem
+                .size(175.dp)
+                .padding(8.dp)
         )
 
         Spacer(modifier = Modifier.height(90.dp))
 
-        // Campo de email
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Rótulo "Email"
             Text(
                 text = "Email",
                 color = Color.White,
@@ -111,7 +107,6 @@ fun PasswordScreen(navController: NavHostController) {
                 modifier = Modifier.padding(end = 8.dp)
             )
 
-            // Campo de texto com placeholder e linha
             Column(
                 modifier = Modifier.weight(1f)
             ) {
@@ -146,7 +141,6 @@ fun PasswordScreen(navController: NavHostController) {
                     singleLine = true
                 )
 
-                // Linha branca
                 Divider(
                     color = Color.White,
                     thickness = 1.dp,
@@ -157,7 +151,6 @@ fun PasswordScreen(navController: NavHostController) {
 
         Spacer(modifier = Modifier.height(80.dp))
 
-        // Botões de navegação
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween

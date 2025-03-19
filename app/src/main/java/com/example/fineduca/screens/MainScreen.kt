@@ -63,19 +63,15 @@ fun MainScreen(navController: NavHostController) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 DarkButton("Cadastre-se", modifier = Modifier.width(150.dp)) {
-                    // Navega para a tela de cadastro e remove a tela anterior da pilha
                     navController.navigate("register_screen") {
-                        // PopUp da tela anterior e volta para a tela de login
                         popUpTo("main_screen") { inclusive = true }
-                        launchSingleTop = true // Evita múltiplas instâncias da tela
+                        launchSingleTop = true
                     }
                 }
                 LightButton("Acessar", modifier = Modifier.width(150.dp)) {
-                    // Navega para a tela de login e remove a tela anterior da pilha
                     navController.navigate("login_screen") {
-                        // PopUp da tela anterior e volta para a tela de login
                         popUpTo("main_screen") { inclusive = true }
-                        launchSingleTop = true // Evita múltiplas instâncias da tela
+                        launchSingleTop = true
                     }
                 }
             }
