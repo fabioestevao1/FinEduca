@@ -41,21 +41,21 @@ android {
 
 dependencies {
     // Dependências do Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
     // Dependências do Compose
-    implementation ("androidx.navigation:navigation-compose:2.6.0")
-    implementation("androidx.compose.ui:ui:1.5.4")
-    implementation("androidx.compose.material3:material3:1.1.2")
-    implementation("androidx.compose.runtime:runtime:1.5.4")
-    implementation("androidx.compose.foundation:foundation:1.5.4")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.5.4")
-    implementation("androidx.activity:activity-compose:1.7.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+    implementation (libs.androidx.navigation.compose.v260)
+    implementation(libs.ui)
+    implementation(libs.material3)
+    implementation(libs.androidx.runtime)
+    implementation(libs.androidx.foundation)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.androidx.activity.compose.v172)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
     // Dependência para corrotinas
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation(libs.kotlinx.coroutines.android)
 
     // Outras dependências (usando Version Catalog)
     implementation(libs.androidx.core.ktx)
@@ -70,6 +70,8 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.android)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.compose.android)
+    implementation(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -78,7 +80,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-
+    // Room Dependencies
+    implementation (libs.androidx.room.runtime)
 
 
 }

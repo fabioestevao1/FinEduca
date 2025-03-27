@@ -19,6 +19,7 @@
     <string name="MontanteCardResultado">"O Montante Bruto sem os impostos é : "</string>
     <string name="ImpostosCardResultado">"O Valor a ser pago de Imposto de Renda na fonte é: "</string>
     <string name="MontanteLiquidoCardResultado">"O Montante após os impostos é: "</string>
+    <string name="ConfigScreenText1">"Settings"</string>
 </resources>
 
 
