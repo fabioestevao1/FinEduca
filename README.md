@@ -50,6 +50,7 @@ Follow these steps to set up and run the project on your local machine:
 ## Contributors
    <table> <tr> <td align="center"> <a href="https://github.com/fabioestevao1"> <img src="https://avatars.githubusercontent.com/u/fabioestevao1" width="100px;" alt="Fabio Estevão"/> <br /> <sub><b>Fabio Estevão</b></sub> </a> </td> </tr> </table>
    <table> <tr> <td align="center"> <a href="https://github.com/BHzdev"> <img src="https://avatars.githubusercontent.com/u/BHzdev" width="100px;" alt="Bruno Henrique"/> <br /> <sub><b>Bruno Henrique</b></sub> </a> </td> </tr> </table>
+   <table> <tr> <td align="center"> <a href="https://github.com/0Felixiano"> <img src="https://avatars.githubusercontent.com/u/0Felixiano" width="100px;" alt="Marcus Silva"/> <br /> <sub><b>Bruno Henrique</b></sub> </a> </td> </tr> </table>
 
 ## License 
 **Distributed under the MIT License. See LICENSE for more information.**
