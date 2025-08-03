@@ -59,3 +59,5 @@ Follow these steps to set up and run the project on your local machine:
 **Email : fabio101515@gmail.com**
 
 **Email : contatobrunohenriquedev@hotmail.com**
+
+**Email : marcusfelix2003@hotmail.com**
